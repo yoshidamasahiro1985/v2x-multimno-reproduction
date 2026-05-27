@@ -4,8 +4,8 @@ message: >-
   (DOI below) and the paper it accompanies (preferred-citation below).
 type: software
 title: >-
-  Reproduction package for the manuscript "A Cross-Layer Measurement
-  Study of Multi-Operator Cellular Redundancy for V2X Reliability"
+  Reproduction package for the manuscript "When Does Multi-Operator
+  Cellular Redundancy Help V2X? A Cross-Layer Measurement Study"
 version: "1.0.0"
 date-released: "2026-05-27"
 authors:
@@ -32,10 +32,10 @@ keywords:
   - redundancy
   - reproducibility
 preferred-citation:
-  type: unpublished
+  type: article
   title: >-
-    A Cross-Layer Measurement Study of Multi-Operator Cellular Redundancy
-    for V2X Reliability
+    When Does Multi-Operator Cellular Redundancy Help V2X?
+    A Cross-Layer Measurement Study
   authors:
     - family-names: Yoshida
       given-names: Masahiro
@@ -44,4 +44,5 @@ preferred-citation:
         Tokyo, Japan
       orcid: "https://orcid.org/0009-0000-2175-0167"
   year: 2026
-  notes: "Manuscript in preparation"
+  journal: "IEEE Access"
+  notes: "Submitted"

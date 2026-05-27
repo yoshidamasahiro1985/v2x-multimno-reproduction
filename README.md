@@ -1,4 +1,4 @@
-# Reproduction Package — Multi-Operator Cellular Redundancy for V2X Reliability
+# Reproduction Package — When Does Multi-Operator Cellular Redundancy Help V2X?
 
 Masahiro Yoshida · Graduate School of Global Informatics, Chuo University
 
@@ -8,16 +8,13 @@ Masahiro Yoshida · Graduate School of Global Informatics, Chuo University
 
 Companion code for the manuscript
 
-> **A Cross-Layer Measurement Study of Multi-Operator Cellular Redundancy for V2X Reliability**
+> **When Does Multi-Operator Cellular Redundancy Help V2X? A Cross-Layer Measurement Study**
 
 This repository contains the analysis scripts and pre-generated figures needed to
 reproduce every result, table, and in-text number reported in the manuscript.
 
 Raw datasets are **not** redistributed here — they are publicly available under their
 respective licences (see below and `code/README.md`).
-
-> **Note**: the manuscript is currently in preparation. The bibliographic record below
-> will be updated once a venue / DOI is assigned.
 
 ## Repository layout
 
@@ -60,14 +57,16 @@ If you use this code, please cite this reproduction package via its Zenodo DOI:
 Once the accompanying manuscript has a public DOI, please cite that too. See
 `code/CITATION.cff` for the machine-readable citation.
 
-Provisional BibTeX entry for the manuscript:
+BibTeX entry for the manuscript (update with DOI on acceptance):
 
 ```bibtex
-@unpublished{yoshida2026v2x,
-  title  = {A Cross-Layer Measurement Study of Multi-Operator Cellular Redundancy for V2X Reliability},
-  author = {Yoshida, Masahiro},
-  year   = {2026},
-  note   = {Manuscript in preparation}
+@article{yoshida2026v2x,
+  title   = {When Does Multi-Operator Cellular Redundancy Help V2X?
+             A Cross-Layer Measurement Study},
+  author  = {Yoshida, Masahiro},
+  journal = {IEEE Access},
+  year    = {2026},
+  note    = {Submitted}
 }
 ```
 

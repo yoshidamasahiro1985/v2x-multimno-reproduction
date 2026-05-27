@@ -1,8 +1,8 @@
 # Reproduction package — multi-MNO V2X reliability measurement study
 
 This package regenerates every figure, table, and in-text number in the
-manuscript *"A Cross-Layer Measurement Study of Multi-Operator Cellular
-Redundancy for V2X Reliability"*. See `MANIFEST.md` for the claim →
+manuscript *"When Does Multi-Operator Cellular Redundancy Help V2X?
+A Cross-Layer Measurement Study"*. See `MANIFEST.md` for the claim →
 script mapping.
 
 ## Requirements
