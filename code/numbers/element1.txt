@@ -1,0 +1,40 @@
+ELEMENT 1 — radio quality does NOT predict throughput (Rule 3)
+(seed 42; OLS R^2, no temporal/context features)
+
+======================================================================
+VIENNA LTE — SINR -> DL throughput (degree-3 polynomial OLS)
+======================================================================
+Valid samples                  : 1,155,265
+Overall R^2 (deg 3)            : 0.1324
+|Pearson corr| (SINR,tput)     : 0.3616
+Per-operator R^2 (same global fit window):
+  operator A: R^2 = 0.2263  (n=574,085)
+  operator B: R^2 = 0.0617  (n=286,094)
+  operator C: R^2 = 0.0616  (n=294,818)
+
+======================================================================
+DoNext iperf — radio -> throughput, downlink full-buffer
+======================================================================
+Clean downlink full-buffer rows: 104,742  (direction=1, datarate<= 2000 Mbps)
+Throughput median / max (Mbps) : 94.2 / 1832.5
+
+Per-RAT R^2 (SINR-only deg-3 poly | multivariate-4 linear LTE leg):
+  all    : SINR-only 0.0043 | multivar-4 0.0386  (n=104,742)
+  5G NSA : SINR-only 0.0040 | multivar-4 0.0371  (n=101,163)
+  4G     : SINR-only 0.0726 | multivar-4 0.1755  (n=3,579)
+
+5G-NSA LTE+NR 7-feature linear R^2: 0.0980  (n=50,783)
+Best single |Pearson corr| with throughput (5G-NSA, 7 feats):
+  ss_rsrp: +0.210
+  rsrq: +0.196
+  cqi: +0.184
+  -> max |corr| = 0.210 (<= 0.21)
+
+======================================================================
+HEADLINE (best R^2 per source)
+======================================================================
+Vienna LTE     : 0.132
+DoNext 5G-NSA  : 0.098
+DoNext 4G      : 0.176
+-> instantaneous radio quality explains <~20% of throughput variance in every case; max |corr| <= 0.21.
+[fig] fig_element1_radio_scatter.pdf  (Vienna n=1,155,265, DoNext 5G-NSA n=50,833, DoNext SS-RSRP deg-3 R^2=0.0450)

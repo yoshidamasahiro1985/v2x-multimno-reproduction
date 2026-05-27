@@ -1,0 +1,52 @@
+DATASET CHARACTERIZATION — manuscript Datasets section (Rule 3)
+(seed 42; DEF_A floors RSRP<-110.0 dBm, SINR<-6.0 dB)
+
+======================================================================
+VIENNA 4G/5G drive-test (phone LTE) — wiedner2026vienna
+======================================================================
+Total LTE phone rows           : 1,183,683
+  operator A rows              : 587,728 (49.7%)
+  operator B rows              : 292,746 (24.7%)
+  operator C rows              : 302,931 (25.6%)
+Sessions (union gap > 60 s)   : 12
+Distinct calendar dates        : 8
+Active measurement time (h)    : 48.5
+Dates with all of A,B,C present: 6
+Dates with both A&C present    : 6  (dependence-pair co-presence)
+Native sampling cadence (median dt within sessions):
+  operator A: median dt = 0.289 s  (~3.46 Hz)
+  operator B: median dt = 0.500 s  (~2.00 Hz)
+  operator C: median dt = 0.500 s  (~2.00 Hz)
+RSRP present (non-NaN)         : 100.0%
+SINR present (non-NaN)         : 99.9%
+
+======================================================================
+BERLIN V2X (cellular) — hernangomez2023berlin
+======================================================================
+Total cellular rows            : 207,434
+  operator 1 rows              : 103,554 (49.9%)
+  operator 2 rows              : 103,880 (50.1%)
+Service classes (measured_qos):
+  datarate  : 129,586
+  delay     : 77,848
+ping_ms null rate (all classes): 28.9%
+V2X delay class total rows     : 77,848
+V2X delay, dual-op runs (8, 9, 10): 43,200
+  run-8/9/10 operator 1 rows    : 21,600
+  run-8/9/10 operator 2 rows    : 21,600
+All delay-class runs present   : [1, 2, 3, 4, 8, 9, 10, 14]
+Convoy op1<->op2 separation (m): median 3.1, p90 10.9  (n=10688 matched seconds)
+
+======================================================================
+DoNext (mobile) — schippers2025donext
+======================================================================
+Total mobile cell rows         : 2,382,602
+  MNO A rows                 : 1,149,039 (48.2%)
+  MNO B rows                 : 1,233,534 (51.8%)
+  MNO C rows                 : 13 (0.0%)
+RAT (network) split:
+  5G NSA  : 2,180,068 (91.5%)
+  4G      : 125,239 (5.3%)
+  2G      : 77,280 (3.2%)
+  3G      : 10 (0.0%)
+5G-NSA samples (ss_rsrp non-NaN): 1,013,107 (42.5%)

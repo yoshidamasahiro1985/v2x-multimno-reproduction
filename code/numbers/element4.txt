@@ -1,0 +1,24 @@
+op1 rate @200ms: 0.2339%
+op2 rate @200ms: 2.0711%
+op2/op1 ratio @200ms: 8.9x
+per-budget op1 rates: 100ms 0.6080%  200ms 0.2339%  500ms 0.0561%
+per-budget op2 rates: 100ms 2.9317%  200ms 2.0711%  500ms 1.6172%
+per-budget JOINT obs / exp: 100ms 1/1.88  200ms 0/0.52  500ms 0/0.10
+op2 max run-length @200ms: 33s
+op2 episodes >=10s @200ms: 6
+JOINT obs @200ms: 0
+JOINT exp @200ms: 0.52
+lift @200ms: 0.00x
+Poisson P(X<=0 | lambda=0.52): 0.60
+Poisson 95% upper CI on lift @200ms: 5.8x
+lift @100ms: 0.53x
+P(op1 out | op2 out) @200ms: 0.000000
+congestion contrast @200ms: ALL 1.45x iperf 1.14x delay 0.00x
+missingness warmup total: 110s
+missingness op1 inrun: 0s
+missingness op2 inrun: 116s
+missingness inrun both: 0s
+inrun_recode lift @200ms: 0.00x
+scheduler nines gain at L=1.2x: 0.08
+scheduler nines gain at L=2.0x: 0.30
+scheduler nines gain at L=L_UB=5.8x: 0.76

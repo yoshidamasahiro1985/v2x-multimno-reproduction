@@ -1,0 +1,150 @@
+ELEMENT 2 — radio-layer multi-MNO outage dependence (Rule 3)
+(seed 42; DEF_A = RSRP<-110 OR SINR<-6; block bootstrap N=2000)
+
+======================================================================
+LOAD Vienna LTE + align to 500 ms grid (outage definition DEF_A)
+======================================================================
+Raw A/B/C rows                 : 1,183,405
+Wide 500 ms slots              : 347,412
+2-h temporal blocks            : 32
+
+======================================================================
+A&C DEF_A — co-location split + 2-h block bootstrap (N=2000)
+======================================================================
+A&C co-present slots           : 221,168
+both cells geolocated          : 70,531 (31.9%)
+joint outages (all / geo)      : 79 / 28
+
+  [AC-all-geo  ] R=1.897  CI95=[1.494,2.645]  n_jo=28  strata=30  ROBUST (CI lower > 1)
+  [AC-same-site] R=3.991  CI95=[3.000,8.774]  n_jo=10  strata=3  ROBUST (CI lower > 1)
+  [AC-diff-site] R=1.469  CI95=[1.146,1.979]  n_jo=18  strata=27  ROBUST (CI lower > 1)
+
+======================================================================
+Failure-mode decomposition (A&C all-geo, RSRP-only / SINR-only)
+======================================================================
+  [RSRP-only] R=2.084  CI95=[1.596,2.816]  n_jo=19  ROBUST (CI lower > 1)
+  [SINR-only] R=3.606  CI95=[2.132,19.726]  n_jo=6  ROBUST (CI lower > 1)
+  Reading: RSRP-only R ~ DEF_A R -> excess is coverage-driven (spatial),
+           consistent with shared sub-1 GHz edge-of-coverage (sub-1 GHz mechanism below).
+
+======================================================================
+Earth-grid mechanism decomposition (A&C, DEF_A / RSRP-only / SINR-only)
+======================================================================
+Slots with GPS                 : 347,412 (100.0%)
+
+  DEF_A:
+    co-present + GPS slots       : 221,168
+    joint outages (total)        : 79
+    220 m: R=1.971  CI95=[1.616,2.253]  n_jo=79  strata=208  ROBUST (CI lower > 1)
+    110 m: R=1.641  CI95=[1.358,1.834]  n_jo=79  strata=174  ROBUST (CI lower > 1)
+     55 m: R=1.303  CI95=[1.140,1.475]  n_jo=79  strata=137  ROBUST (CI lower > 1)
+
+  RSRP-only:
+    co-present + GPS slots       : 221,168
+    joint outages (total)        : 42
+    220 m: R=2.046  CI95=[1.504,2.484]  n_jo=42  strata=80  ROBUST (CI lower > 1)
+    110 m: R=1.805  CI95=[1.333,2.177]  n_jo=42  strata=63  ROBUST (CI lower > 1)
+     55 m: R=1.282  CI95=[1.099,1.527]  n_jo=42  strata=49  ROBUST (CI lower > 1)
+
+  SINR-only:
+    co-present + GPS slots       : 221,083
+    joint outages (total)        : 13
+    220 m: R=1.910  CI95=[1.104,3.354]  n_jo=13  strata=105  ROBUST (CI lower > 1)
+    110 m: R=1.699  CI95=[1.086,2.547]  n_jo=13  strata=65  ROBUST (CI lower > 1)
+     55 m: R=1.450  CI95=[0.944,2.212]  n_jo=13  strata=45  FRAGILE (CI includes 1)
+
+  Reading: SINR-only R (interference events) tracks RSRP-only R
+  (coverage events) and the composite DEF_A R across all three grid
+  resolutions -> the A&C joint-outage excess is coverage-geometry-
+  driven, NOT a per-operator RAN-scheduler interference coupling.
+
+======================================================================
+Negative controls — A&B, B&C (DEF_A, cell-pair, block bootstrap)
+======================================================================
+  [A&B] R=1.067  CI95=[0.842,1.116]  n_jo=119  FRAGILE (CI includes 1)
+  [B&C] R=0.845  CI95=[0.658,1.356]  n_jo=71  FRAGILE (CI includes 1)
+  Expected: CI straddles 1.0 (no pair-coupling for the non-focal pairs).
+
+======================================================================
+3-pair Bonferroni on the load-bearing diff-site residual
+======================================================================
+  [AC-all-geo  ] R=1.897  Bonf-98.3%LB=1.437  p1(R<=1)=0.0000 -> x3 = 0.0000  survives=True
+  [AC-diff-site] R=1.469  Bonf-98.3%LB=1.106  p1(R<=1)=0.0070 -> x3 = 0.0210  survives=True
+  Load-bearing statistic = diff-site CI (a CI, not a multiple-tested p);
+  its Bonferroni-corrected one-sided p and 98.3% LB are reported above.
+
+======================================================================
+Cochran-Q heterogeneity test on per-stratum log-rate-ratios
+======================================================================
+  (Tests the Mantel-Haenszel within-stratum homogeneity
+   assumption directly.)
+  [AC-all-geo  ] K=11 contrib strata  Q=51.44  df=10  p=0.000  I^2=81%  homogeneous=False
+               per-stratum r_k: min=1.46  median=3.00  max=209.50  (count O_k=1: 7)
+  [AC-same-site] K=3 contrib strata  Q=29.00  df=2  p=0.000  I^2=93%  homogeneous=False
+               per-stratum r_k: min=2.88  median=14.79  max=209.50  (count O_k=1: 1)
+  [AC-diff-site] K=8 contrib strata  Q=13.61  df=7  p=0.058  I^2=49%  homogeneous=True
+               per-stratum r_k: min=1.46  median=2.75  max=58.33  (count O_k=1: 6)
+  Reading: failure-to-reject homogeneity (p >= 0.05) is consistent with
+  the MH within-stratum homogeneity assumption; the headline R is then
+  a defensible pooled estimate. Rejection (p < 0.05) would flag the
+  pooled R as masking stratum-level heterogeneity.
+
+======================================================================
+Earth-grid scale-descent trend test (Kendall tau, exact permutation)
+======================================================================
+  Earth-grid A&C DEF_A MH (imported constants):
+    grid 220 m -> R = 1.971
+    grid 110 m -> R = 1.641
+    grid  55 m -> R = 1.303
+    grid  28 m -> R = 1.250
+  Kendall tau = +1.000  (concordant=6, discordant=0)
+  exact one-sided p(tau>=obs) = 0.0417  -> x3 Bonferroni = 0.125
+  tau=+1 -> R decreases monotonically as the grid gets finer: the excess
+  shrinks toward independence at finer spatial scales (co-location-driven).
+  CONCEDED: after 3-pair correction the trend is supporting, not decisive.
+
+======================================================================
+Coordinate validation — same-/diff-site classification robustness
+======================================================================
+Same-site pairs (estimated co-located):
+  A=517639/C=17531660  est=0m recomp=0.0m  az_delta=10.0 deg  height_delta=2m
+  A=517640/C=17531660  est=0m recomp=0.0m  az_delta=100.0 deg  height_delta=2m
+  A=80141/C=6168589  est=40m recomp=40.2m  az_delta=5.0 deg  height_delta=4m
+  Max same-site coordinate separation (error upper bound): 40 m
+
+Min diff-site distance         : 309 m
+Classification margin          : 309 - 50 = 259 m
+Safety factor (margin / error) : 6.4x
+  -> to misclassify any diff-site pair as same-site the coordinate error
+     must exceed 259 m, i.e. 6.4x the observed 40 m bound.
+  All diff-site cells within Vienna bbox: True (no sentinel coords)
+
+======================================================================
+sub-1 GHz mechanism — A&C fall back to 800 MHz at joint outages
+======================================================================
+  A&C co-present slots (overall) (n_slots=221168):
+    A: n=220995  median 1855 MHz  sub-1GHz 14.2%
+    B: n=202066  median 1838 MHz  sub-1GHz 0.0%
+    C: n=221018  median 1815 MHz  sub-1GHz 3.4%
+  A&C JOINT-OUTAGE slots (n_slots=79):
+    A: n=    79  median 1855 MHz  sub-1GHz 34.2%
+    B: n=    72  median 1838 MHz  sub-1GHz 0.0%
+    C: n=    79  median 1815 MHz  sub-1GHz 12.7%
+  Lift = at-JO / overall  (Table II col 5):
+    A: lift=2.41x  (34.2% / 14.2%)
+    B: lift=N/A (no sub-1 GHz spectrum)
+    C: lift=3.77x  (12.7% / 3.4%)
+  B holds NO sub-1 GHz spectrum anywhere -> B's 0% is a network fact, not
+  a measurement artefact -> B is a legitimate clean negative control.
+  A & C both retreat to their 800 MHz (B20) band and still fail together
+  -> the residual is concentrated at shared sub-1 GHz coverage edges.
+[fig] fig_element2_forest_grid.pdf
+[fig] fig_element2_mechanism.pdf
+
+======================================================================
+HEADLINE
+======================================================================
+A&C joint outage is co-location-dominated: same-site R=3.99, diff-site R=1.47
+diff-site residual CI95=[1.146,1.979]  (n_jo=18)
+-> above location-conditional independence, but modest and concentrated at
+   shared sub-1 GHz coverage edges; 'beyond location' is NOT claimed.

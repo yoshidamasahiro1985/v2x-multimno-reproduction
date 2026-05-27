@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: >-
+  If you use this reproduction package, please cite both this package
+  (DOI below) and the paper it accompanies (preferred-citation below).
+type: software
+title: >-
+  Reproduction package for the manuscript "A Cross-Layer Measurement
+  Study of Multi-Operator Cellular Redundancy for V2X Reliability"
+version: "1.0.0"
+date-released: "2026-05-27"
+authors:
+  - family-names: Yoshida
+    given-names: Masahiro
+    affiliation: >-
+      Graduate School of Global Informatics, Chuo University,
+      Tokyo, Japan
+    orcid: "https://orcid.org/0009-0000-2175-0167"
+license: MIT
+repository-code: "TBD: GitHub URL inserted at submission"
+doi: "TBD: Zenodo DOI inserted at submission"
+abstract: >-
+  Single-pipeline reproduction package emitting every figure, table, and
+  in-text number in the accompanying manuscript on multi-operator
+  cellular redundancy for V2X reliability. Consumes three publicly
+  available cellular-measurement datasets (Vienna 4G/5G, Berlin V2X,
+  DoNext); does not redistribute raw data.
+keywords:
+  - V2X
+  - multi-operator
+  - cellular reliability
+  - cellular measurement
+  - redundancy
+  - reproducibility
+preferred-citation:
+  type: unpublished
+  title: >-
+    A Cross-Layer Measurement Study of Multi-Operator Cellular Redundancy
+    for V2X Reliability
+  authors:
+    - family-names: Yoshida
+      given-names: Masahiro
+      affiliation: >-
+        Graduate School of Global Informatics, Chuo University,
+        Tokyo, Japan
+      orcid: "https://orcid.org/0009-0000-2175-0167"
+  year: 2026
+  notes: "Manuscript in preparation"

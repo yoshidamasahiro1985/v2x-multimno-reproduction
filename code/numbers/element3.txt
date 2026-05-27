@@ -1,0 +1,17 @@
+Vienna A marginal outage: 0.8496%
+Vienna C marginal outage: 1.7062%
+Vienna single-best availability: 99.1504%
+gain independence (R=1): 8350.99 ppm
+gain R=1.30: 8307.50 ppm
+erosion R=1.30: 0.52%
+gain R=1.47: 8282.86 ppm
+erosion R=1.47: 0.82%
+gain R=1.97: 8210.38 ppm
+erosion R=1.97: 1.68%
+retains at R=1.97 CI upper: 98.3%
+break-even Vienna R=1.30: 8307.50 ppm (0.8308%)
+Berlin gain independence-predicted: 2290.2 ppm (0.2290%)
+Berlin gain observed JOINT=0: 2338.6 ppm (0.2339%)
+Berlin observed minus independence: +48.4 ppm
+Berlin break-even (observed): 0.2339%
+Berlin op2/op1 ratio: 9x
