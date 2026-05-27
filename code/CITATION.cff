@@ -16,8 +16,8 @@ authors:
       Tokyo, Japan
     orcid: "https://orcid.org/0009-0000-2175-0167"
 license: MIT
-repository-code: "TBD: GitHub URL inserted at submission"
-doi: "TBD: Zenodo DOI inserted at submission"
+repository-code: "https://github.com/yoshidamasahiro1985/v2x-multimno-reproduction"
+doi: "10.5281/zenodo.20404338"
 abstract: >-
   Single-pipeline reproduction package emitting every figure, table, and
   in-text number in the accompanying manuscript on multi-operator

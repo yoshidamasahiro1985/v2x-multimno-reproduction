@@ -53,9 +53,12 @@ all numbers to `numbers/*.txt`.
 
 ## Citation
 
-If you use this code, please cite this reproduction package. Once the accompanying
-manuscript has a public DOI, please cite that too. See `code/CITATION.cff` for the
-machine-readable citation.
+If you use this code, please cite this reproduction package via its Zenodo DOI:
+
+> **DOI**: [10.5281/zenodo.20404338](https://doi.org/10.5281/zenodo.20404338)
+
+Once the accompanying manuscript has a public DOI, please cite that too. See
+`code/CITATION.cff` for the machine-readable citation.
 
 Provisional BibTeX entry for the manuscript:
 
