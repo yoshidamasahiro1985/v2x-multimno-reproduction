@@ -547,13 +547,18 @@ def _element2_figure(ac_results: dict, neg_results: dict) -> None:
         "legend.fontsize": 7,
         "pdf.fonttype": 42,
     })
-    # Assemble rows for the forest plot (bottom-to-top so labels read top-down)
+    # Assemble rows for the forest plot (bottom-to-top so labels read top-down).
+    # n_JO (joint-outage count) is embedded in the row label to avoid the
+    # right-column overlap with the same-site CI upper whisker.
+    def _row(label, res, color, marker):
+        return (f"{label} ($n_{{JO}}{{=}}{res['n_jo']}$)", res, color, marker)
+
     rows = [
-        ("B\\&C (neg ctrl)",  neg_results["B&C"], "0.35", "o"),
-        ("A\\&B (neg ctrl)",  neg_results["A&B"], "0.35", "o"),
-        ("A\\&C diff-site",   ac_results["AC-diff-site"], "tab:red", "D"),
-        ("A\\&C same-site",   ac_results["AC-same-site"], "tab:blue", "s"),
-        ("A\\&C all-geo",     ac_results["AC-all-geo"],   "tab:blue", "o"),
+        _row("B\\&C (neg ctrl)",  neg_results["B&C"], "0.35", "o"),
+        _row("A\\&B (neg ctrl)",  neg_results["A&B"], "0.35", "o"),
+        _row("A\\&C diff-site",   ac_results["AC-diff-site"], "tab:red", "D"),
+        _row("A\\&C same-site",   ac_results["AC-same-site"], "tab:blue", "s"),
+        _row("A\\&C all-geo",     ac_results["AC-all-geo"],   "tab:blue", "o"),
     ]
     fig, (axA, axB) = plt.subplots(
         2, 1, figsize=(3.5, 4.6),
@@ -569,17 +574,13 @@ def _element2_figure(ac_results: dict, neg_results: dict) -> None:
             fmt=marker, color=color, ecolor=color,
             elinewidth=1.2, capsize=2.5, markersize=5,
         )
-        axA.text(
-            5.5, y, f"$n_{{JO}}={r['n_jo']}$",
-            va="center", ha="right", fontsize=7, color="0.25",
-        )
     axA.axvline(1.0, color="0.5", linestyle="--", linewidth=0.8)
     axA.set_yticks(ys)
     axA.set_yticklabels([row[0] for row in rows])
     axA.set_xscale("log")
-    axA.set_xlim(0.5, 6.0)
-    axA.set_xticks([0.5, 1, 2, 3, 5])
-    axA.set_xticklabels(["0.5", "1", "2", "3", "5"])
+    axA.set_xlim(0.5, 10.0)
+    axA.set_xticks([0.5, 1, 2, 3, 5, 10])
+    axA.set_xticklabels(["0.5", "1", "2", "3", "5", "10"])
     axA.set_xlabel(r"Mantel--Haenszel ratio $R$ (log scale)")
     axA.set_title("(a) Joint-outage ratios, 95\\% block-bootstrap CI", fontsize=8)
     axA.grid(axis="x", linestyle=":", linewidth=0.5, alpha=0.7)

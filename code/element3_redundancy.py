@@ -258,8 +258,8 @@ fig, ax = plt.subplots(figsize=(3.5, 2.6))
 ax.plot(rs_curve, gains_curve, color="tab:blue", linewidth=1.4,
         label="Vienna A\\&C, $P_{\\mathrm{joint}}=R\\,p_A p_C$")
 mark_rs = [1.00, 1.30, 1.47, 1.97]
-mark_lbls = ["independence", "diff-site point (1.30)",
-             "diff-site $R$ (1.47)", "CI upper (1.97)"]
+mark_lbls = ["independence", "earth-grid 55 m (1.30)",
+             "diff-site $R$ (1.47)", "diff-site CI upper (1.97)"]
 mark_colors = ["0.4", "tab:green", "tab:orange", "tab:red"]
 for r_val, lbl, col in zip(mark_rs, mark_lbls, mark_colors):
     g = gain_and_erosion(p_a, p_c, r_val, gain_indep / 1e6)[1]
